@@ -10,6 +10,11 @@ class App extends Component {
       monsters: [],
       searchField: ''
     };
+
+  }
+
+  handleChange = (e) => {
+    this.setState({ searchField: e.target.value } );
   }
 
   componentDidMount() {
@@ -25,12 +30,7 @@ class App extends Component {
     return (
       <div className="App">
         <SearchBox placeholder="Buscar" 
-         handleChange={ 
-           e =>  {
-            this.setState({ searchField: e.target.value }, () => {
-              console.log(this.state.searchField)
-            });
-           } }/>
+         handleChange={this.handleChange}/>
         <CardList monsters={filteredMonsters} />
       </div>
     );
